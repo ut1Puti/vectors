@@ -1,0 +1,232 @@
+package vectors;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+/**
+ *
+ *
+ * @author
+ * @version
+ */
+public class Vector5dTests {
+    /**
+     *
+     *
+     * @param vector
+     * @param coordinateIndex
+     * @param expectedValue
+     */
+    @ParameterizedTest(name = "{0}.{1} = {2}")
+    @MethodSource("provideGetCoordinateTestData")
+    public void testVector5dGetCoordinate(Vector5d vector, int coordinateIndex, double expectedValue) {
+        assertEquals(expectedValue, vector.getCoordinate(coordinateIndex));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testVector5dGetDimension() {
+        Vector5d vector5d = new Vector5d(0, 0, 1, 1, 0);
+        assertEquals(5, vector5d.getDimension());
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testVector3dGetCoordinateIllegalArguments() {
+        Vector5d vector5d = new Vector5d(1, 3, 54, 10, -15);
+        assertThrows(IllegalArgumentException.class, () -> vector5d.getCoordinate(-2));
+        assertThrows(IllegalArgumentException.class, () -> vector5d.getCoordinate(10000));
+    }
+
+    /**
+     *
+     *
+     * @param firstVector
+     * @param secondVector
+     * @param expectedVector
+     */
+    @ParameterizedTest(name = "{0} + {1} = {2}")
+    @MethodSource("provideAddTestData")
+    public void testVector5dAdd(Vector5d firstVector, Vector5d secondVector, Vector5d expectedVector) {
+        assertEquals(expectedVector, firstVector.add(secondVector));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testVector5dAddNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Vector5d(1, 2, 0, 8, 9).add(null));
+    }
+
+    /**
+     *
+     *
+     * @param vector
+     * @param scalar
+     * @param expectedVector
+     */
+    @ParameterizedTest(name = "{0} * {1} = {2}")
+    @MethodSource("provideMultiplyByScalarData")
+    public void testVector5dMultiplyByScalar(Vector5d vector, double scalar, Vector5d expectedVector) {
+        assertEquals(expectedVector, vector.multiplyByScalar(scalar));
+    }
+
+    /**
+     *
+     *
+     * @param firstVector
+     * @param secondVector
+     * @param expectedVector
+     */
+    @ParameterizedTest(name = "{0} - {1} = {2}")
+    @MethodSource("provideMinusTestData")
+    public void testVector5dMinus(Vector5d firstVector, Vector5d secondVector, Vector5d expectedVector) {
+        assertEquals(expectedVector, firstVector.minus(secondVector));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testVector5dMinusNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Vector5d(1, 2, 0, 4, 18).minus(null));
+    }
+
+    /**
+     *
+     *
+     * @param firstVector
+     * @param secondVector
+     * @param expectedResult
+     */
+    @ParameterizedTest(name = "{0} * {1} = {2}")
+    @MethodSource("provideDotProductTestData")
+    public void testVector5dDotProduct(Vector5d firstVector, Vector5d secondVector, double expectedResult) {
+        assertEquals(expectedResult, firstVector.dotProduct(secondVector));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testVector5dDotProductNull() {
+        assertThrows(IllegalArgumentException.class, () -> new Vector5d(2, 1, 0, -1, -2).dotProduct(null));
+    }
+
+    /**
+     *
+     *
+     * @param firstVector
+     * @param secondVector
+     * @param expectedResult
+     */
+    @ParameterizedTest(name = "coordinate ratio {0} and {1} is {2}")
+    @MethodSource("provideCompareByCoordinateTestData")
+    public void testVector5dCompareByCoordinate(Vector5d firstVector, Vector5d secondVector, List<Integer> expectedResult) {
+        assertEquals(expectedResult.get(0), firstVector.compareByCoordinate(secondVector, 0));
+        assertEquals(expectedResult.get(1), firstVector.compareByCoordinate(secondVector, 1));
+        assertEquals(expectedResult.get(2), firstVector.compareByCoordinate(secondVector, 2));
+        assertEquals(expectedResult.get(3), firstVector.compareByCoordinate(secondVector, 3));
+        assertEquals(expectedResult.get(4), firstVector.compareByCoordinate(secondVector, 4));
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testVector5dCompareByCoordinateIllegalArguments() {
+        Vector5d vector5d = new Vector5d(1, 1, 1, 1, 1);
+        Vector5d vector5d1 = new Vector5d(4, 5, -1, 0, 9);
+        assertThrows(IllegalArgumentException.class, () -> vector5d.compareByCoordinate(null, 1));
+        assertThrows(IllegalArgumentException.class, () -> vector5d.compareByCoordinate(null, -1));
+        assertThrows(IllegalArgumentException.class, () -> vector5d.compareByCoordinate(null, 6));
+        assertThrows(IllegalArgumentException.class, () -> vector5d.compareByCoordinate(vector5d1, 6));
+        assertThrows(IllegalArgumentException.class, () -> vector5d.compareByCoordinate(vector5d1, -4));
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    private static Stream<Arguments> provideGetCoordinateTestData() {
+        return Stream.of(
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), 0, 1),
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), 1, 2),
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), 2, 3),
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), 3, 4),
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), 4, 5)
+        );
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    private static Stream<Arguments> provideAddTestData() {
+        return Stream.of(
+                Arguments.of(new Vector5d(1, 2, 3, 17, -9), new Vector5d(3, 2, 1, -13, 13), new Vector5d(4, 4, 4, 4, 4))
+        );
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    private static Stream<Arguments> provideMultiplyByScalarData() {
+        return Stream.of(
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), -1, new Vector5d(-1, -2, -3, -4, -5)),
+                Arguments.of(new Vector5d(1, 2, 8, 4, -2), 2.5, new Vector5d(2.5, 5, 20, 10, -5)),
+                Arguments.of(new Vector5d(4, 3, 7, 1, 0), 10, new Vector5d(40, 30, 70, 10, 0)),
+                Arguments.of(new Vector5d(1000000087, 274832723, 384238, -7879, -43728937), 0, new Vector5d(0, 0, 0, 0, 0))
+        );
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    private static Stream<Arguments> provideMinusTestData() {
+        return Stream.of(
+                Arguments.of(new Vector5d(1, 2, 3, 4, 5), new Vector5d(3, 2, 1, 0, -1), new Vector5d(-2, 0, 2, 4, 6))
+        );
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    private static Stream<Arguments> provideDotProductTestData() {
+        return Stream.of(
+                Arguments.of(new Vector5d(1, 3, -5, 14, 4), new Vector5d(4, -2, -1, 6, 9), 123)
+        );
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    private static Stream<Arguments> provideCompareByCoordinateTestData() {
+        return Stream.of(
+                Arguments.of(new Vector5d(1, 3, -5, 0, 19), new Vector5d(4, -2, -1, 0, 100), List.of(-1, 1, -1, 0, -1))
+        );
+    }
+}
