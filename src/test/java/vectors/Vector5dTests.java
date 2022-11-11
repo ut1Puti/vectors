@@ -12,18 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
+ * Класс тестирующий пятимерные вектора
  *
- *
- * @author
- * @version
+ * @author Кедровских Олег
+ * @version 1.0
  */
 public class Vector5dTests {
     /**
+     * Метод тестирующий получение координаты пятимерного ветора
      *
-     *
-     * @param vector
-     * @param coordinateIndex
-     * @param expectedValue
+     * @param vector          вектор
+     * @param coordinateIndex индекс получаемой координаты
+     * @param expectedValue   ожидаемое значение координаты
      */
     @ParameterizedTest(name = "{0}.{1} = {2}")
     @MethodSource("provideGetCoordinateTestData")
@@ -32,7 +32,7 @@ public class Vector5dTests {
     }
 
     /**
-     *
+     * Метод тестирующий получение размерности вектор
      */
     @Test
     public void testVector5dGetDimension() {
@@ -41,7 +41,7 @@ public class Vector5dTests {
     }
 
     /**
-     *
+     * Метод тестирующий получение координаты вектора по несуществующей координате
      */
     @Test
     public void testVector3dGetCoordinateIllegalArguments() {
@@ -51,11 +51,11 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод тестирующий сложение пятимерных векторов
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedVector
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedVector ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} + {1} = {2}")
     @MethodSource("provideAddTestData")
@@ -64,7 +64,7 @@ public class Vector5dTests {
     }
 
     /**
-     *
+     * Метод тестирующий сложение с {@code null}
      */
     @Test
     public void testVector5dAddNull() {
@@ -72,11 +72,11 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод тестирующий множение пятимерного вектора на скаляр
      *
-     *
-     * @param vector
-     * @param scalar
-     * @param expectedVector
+     * @param vector         вектор
+     * @param scalar         скаляр
+     * @param expectedVector ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @MethodSource("provideMultiplyByScalarData")
@@ -85,11 +85,11 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод тестирующий вычитание пятимерных векторов
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedVector
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedVector ожиаемый вектор
      */
     @ParameterizedTest(name = "{0} - {1} = {2}")
     @MethodSource("provideMinusTestData")
@@ -98,7 +98,7 @@ public class Vector5dTests {
     }
 
     /**
-     *
+     * Метод тестирующий вычитание {@code null}
      */
     @Test
     public void testVector5dMinusNull() {
@@ -106,11 +106,11 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод тестирующий скалярное произведение пятимерных векторов
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedResult
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedResult ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @MethodSource("provideDotProductTestData")
@@ -119,7 +119,7 @@ public class Vector5dTests {
     }
 
     /**
-     *
+     * Метод тестирующий скалярное произведение с {@code null}
      */
     @Test
     public void testVector5dDotProductNull() {
@@ -127,11 +127,11 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод тестирующий сравнение пятимерного вектора по координатам
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedResult
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedResult ожидаемое значение сравнения
      */
     @ParameterizedTest(name = "coordinate ratio {0} and {1} is {2}")
     @MethodSource("provideCompareByCoordinateTestData")
@@ -144,7 +144,7 @@ public class Vector5dTests {
     }
 
     /**
-     *
+     * Метод тестирующий сравнение некорекктных параметров при сравнении
      */
     @Test
     public void testVector5dCompareByCoordinateIllegalArguments() {
@@ -158,9 +158,9 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод данных для теста получения координаты
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideGetCoordinateTestData() {
         return Stream.of(
@@ -173,9 +173,9 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод данных для тестов сложения
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideAddTestData() {
         return Stream.of(
@@ -184,9 +184,9 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод данных для тестов умножения на скаляр
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideMultiplyByScalarData() {
         return Stream.of(
@@ -198,9 +198,9 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод данных для тестов вычитания
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideMinusTestData() {
         return Stream.of(
@@ -209,9 +209,9 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод данных для тестов скалярного произведения
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideDotProductTestData() {
         return Stream.of(
@@ -220,9 +220,9 @@ public class Vector5dTests {
     }
 
     /**
+     * Метод данных для тестов сравнения по координатам
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideCompareByCoordinateTestData() {
         return Stream.of(

@@ -3,9 +3,9 @@ package vectors;
 /**
  * Класс представляющий абстрактный вектор
  *
+ * @param <T> тип представляющий собой реализацию интерфейса {@code Vector} или класса {@code AbstractVector}
  * @author Кедровских Олег
  * @version 1.0
- * @param <T> тип представляющий собой реализацию интерфейса {@code Vector} или класса {@code AbstractVector}
  */
 public abstract class AbstractVector<T extends Vector<T>> implements Vector<T> {
     /**

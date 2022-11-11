@@ -12,18 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
+ * Класс тестирующий n-мерные вектора
  *
- *
- * @author
- * @version
+ * @author Кедровских Олег
+ * @version 1.0
  */
 public class VectorNdTests {
     /**
+     * Метод тестирующий получение координаты n-мерного ветора
      *
-     *
-     * @param vector
-     * @param coordinateIndex
-     * @param expectedValue
+     * @param vector          вектор
+     * @param coordinateIndex индекс получаемой координаты
+     * @param expectedValue   ожидаемое значение координаты
      */
     @ParameterizedTest(name = "{0}.{1} = {2}")
     @MethodSource("provideGetCoordinateTestData")
@@ -32,7 +32,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий получение координаты вектора по несуществующей координате
      */
     @Test
     public void testVectorNdGetCoordinateIllegalArguments() {
@@ -42,10 +42,10 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод тестирующий получение размерности n-мерного вектора
      *
-     *
-     * @param vectorNd
-     * @param expectedDimensionSize
+     * @param vectorNd              вектор
+     * @param expectedDimensionSize ожидаемая размерность
      */
     @ParameterizedTest(name = "dim({0}) = {1}")
     @MethodSource("provideGetDimensionTestData")
@@ -54,11 +54,11 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод тестирующий сложение n-мерных векторов
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedVector
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedVector ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} + {1} = {2}")
     @MethodSource("provideAddTestData")
@@ -67,7 +67,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий сложение с {@code null}
      */
     @Test
     public void testVectorNdAddNull() {
@@ -75,7 +75,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий сложение векторов разной размерности
      */
     @Test
     public void testVectorNdDiffDimensionsAdd() {
@@ -83,23 +83,24 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод тестирующий множение n-мерного вектора на скаляр
      *
-     *
-     * @param vector
-     * @param scalar
-     * @param expectedVector
+     * @param vector         вектор
+     * @param scalar         скаляр
+     * @param expectedVector ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @MethodSource("provideMultiplyByScalarData")
     public void testVectorNdMultiplyByScalar(VectorNd vector, double scalar, VectorNd expectedVector) {
         assertEquals(expectedVector, vector.multiplyByScalar(scalar));
     }
+
     /**
+     * Метод тестирующий вычитание n-мерных векторов
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedVector
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedVector ожиаемый вектор
      */
     @ParameterizedTest(name = "{0} - {1} = {2}")
     @MethodSource("provideMinusTestData")
@@ -108,7 +109,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий вычитание векторов разной размерности
      */
     @Test
     public void testVectorNdDiffDimensionsMinus() {
@@ -116,7 +117,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий вычитание {@code null}
      */
     @Test
     public void testVectorNdMinusNull() {
@@ -124,11 +125,11 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод тестирующий скалярное произведение n-мерных векторов
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedResult
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedResult ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @MethodSource("provideDotProductTestData")
@@ -137,7 +138,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий вычитание векторов разной размерности
      */
     @Test
     public void testVectorNdDiffDimensionsDotProduct() {
@@ -145,7 +146,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий скалярное произведение с {@code null}
      */
     @Test
     public void testVectorNdDotProductNull() {
@@ -153,11 +154,11 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод тестирующий сравнение n-мерного вектора по координатам
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedResult
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedResult ожидаемое значение сравнения
      */
     @ParameterizedTest(name = "coordinate ratio {0} and {1} is {2}")
     @MethodSource("provideCompareByCoordinateTestData")
@@ -165,10 +166,10 @@ public class VectorNdTests {
         for (int i = 0; i < firstVector.getDimension(); i++) {
             assertEquals(expectedResult.get(i), firstVector.compareByCoordinate(secondVector, i));
         }
-     }
+    }
 
     /**
-     *
+     * Метод тестирующий сравнение векторов разной размерности
      */
     @Test
     public void testVectorNdDiffDimensionsCompareByCoordinate() {
@@ -176,7 +177,7 @@ public class VectorNdTests {
     }
 
     /**
-     *
+     * Метод тестирующий сравнение некорекктных параметров при сравнении
      */
     @Test
     public void testVectorNdCompareByCoordinateIllegalArguments() {
@@ -190,9 +191,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для тестов размерностей
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideGetDimensionTestData() {
         return Stream.of(
@@ -202,9 +203,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для теста получения координаты
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideGetCoordinateTestData() {
         return Stream.of(
@@ -217,9 +218,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для тестов сложения
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideAddTestData() {
         return Stream.of(
@@ -228,9 +229,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для тестов умножения на скаляр
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideMultiplyByScalarData() {
         return Stream.of(
@@ -242,9 +243,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для тестов вычитания
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideMinusTestData() {
         return Stream.of(
@@ -253,9 +254,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для тестов скалярного произведения
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideDotProductTestData() {
         return Stream.of(
@@ -264,9 +265,9 @@ public class VectorNdTests {
     }
 
     /**
+     * Метод данных для тестов сравнения по координатам
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideCompareByCoordinateTestData() {
         return Stream.of(

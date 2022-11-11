@@ -1,34 +1,34 @@
 package vectors;
 
 /**
+ * Класс пятимерных векторов
  *
- *
- * @author
- * @version
+ * @author Кедровских Олег
+ * @version 1.0
  */
 public class Vector5d extends AbstractVector<Vector5d> {
     /**
-     *
+     * Поле массива координат пятимерного вектора
      */
     private final double[] coordinates;
 
     /**
+     * Конструктор - создает экземпляр классов
      *
-     *
-     * @param a1
-     * @param a2
-     * @param a3
-     * @param a4
-     * @param a5
+     * @param a1 первая координата
+     * @param a2 вторая координата
+     * @param a3 третья координата
+     * @param a4 четвертая координата
+     * @param a5 пятая координата
      */
     public Vector5d(double a1, double a2, double a3, double a4, double a5) {
-        this.coordinates = new double[] {a1, a2, a3, a4, a5};
+        this.coordinates = new double[]{a1, a2, a3, a4, a5};
     }
 
     /**
+     * Конструктор - создает экземляр класс на основе массива координат вектора
      *
-     *
-     * @param coordinates
+     * @param coordinates массив координат вектора
      */
     private Vector5d(double[] coordinates) {
 
@@ -40,11 +40,11 @@ public class Vector5d extends AbstractVector<Vector5d> {
     }
 
     /**
-     *
+     * Метод получающий координату вектора
      *
      * @param coordinateIndex номер координаты, которую необходимо получить их вектора,
      *                        номер координаты должен быть в машинном представлении, то есть как индексы массива
-     * @return
+     * @return координату вектора по индексу. Пример {1, 2, 3, 4, 5} индексы координат соодтвествуют числам - 1
      */
     @Override
     public double getCoordinate(int coordinateIndex) {
@@ -57,9 +57,9 @@ public class Vector5d extends AbstractVector<Vector5d> {
     }
 
     /**
+     * Метод получающий размерность вектора
      *
-     *
-     * @return
+     * @return {@code 5}
      */
     @Override
     public int getDimension() {
@@ -67,10 +67,10 @@ public class Vector5d extends AbstractVector<Vector5d> {
     }
 
     /**
-     *
+     * Метод выполняющий сложение пятимерных векторов векторов
      *
      * @param anotherVector вектор, который является вторым аргументом операции сложения
-     * @return
+     * @return новый пятимерный вектор являющийся результатом сложения двух пятимерных векторов
      */
     @Override
     public Vector5d add(Vector5d anotherVector) {
@@ -84,10 +84,10 @@ public class Vector5d extends AbstractVector<Vector5d> {
     }
 
     /**
-     *
+     * Метод выполняющий умножение пятимерного вектора на скаляр
      *
      * @param scalar значение скаляра
-     * @return
+     * @return новый пятимерный вектор являющийся результатом умножения пятимерного вектора на скаляр
      */
     @Override
     public Vector5d multiplyByScalar(double scalar) {

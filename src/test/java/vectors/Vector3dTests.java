@@ -12,18 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
+ * Класс тестирующий трехмерные вектора
  *
- *
- * @author
- * @version
+ * @author Кедровских Олег
+ * @version 1.0
  */
 public class Vector3dTests {
     /**
+     * Метод тестирующий получение координаты трехмерного ветора
      *
-     *
-     * @param vector
-     * @param coordinateIndex
-     * @param expectedValue
+     * @param vector          вектор
+     * @param coordinateIndex индекс получаемой координаты
+     * @param expectedValue   ожидаемое значение координаты
      */
     @ParameterizedTest(name = "{0}.{1} = {2}")
     @MethodSource("provideGetCoordinateTestData")
@@ -32,7 +32,7 @@ public class Vector3dTests {
     }
 
     /**
-     *
+     * Метод тестирующий получение размерности вектор
      */
     @Test
     public void testVector3dGetDimension() {
@@ -41,7 +41,7 @@ public class Vector3dTests {
     }
 
     /**
-     *
+     * Метод тестирующий получение координаты вектора по несуществующей координате
      */
     @Test
     public void testVector3dGetCoordinateIllegalArguments() {
@@ -51,9 +51,11 @@ public class Vector3dTests {
     }
 
     /**
-     * @param firstVector
-     * @param secondVector
-     * @param expectedVector
+     * Метод тестирующий сложение трехмерных векторов
+     *
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedVector ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} + {1} = {2}")
     @MethodSource("provideAddTestData")
@@ -62,7 +64,7 @@ public class Vector3dTests {
     }
 
     /**
-     *
+     * Метод тестирующий сложение с {@code null}
      */
     @Test
     public void testVector3dAddNull() {
@@ -70,9 +72,11 @@ public class Vector3dTests {
     }
 
     /**
-     * @param vector
-     * @param scalar
-     * @param expectedVector
+     * Метод тестирующий множение трехмерного вектора на скаляр
+     *
+     * @param vector         вектор
+     * @param scalar         скаляр
+     * @param expectedVector ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @MethodSource("provideMultiplyByScalarData")
@@ -81,9 +85,11 @@ public class Vector3dTests {
     }
 
     /**
-     * @param firstVector
-     * @param secondVector
-     * @param expectedVector
+     * Метод тестирующий вычитание трехмерных векторов
+     *
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedVector ожиаемый вектор
      */
     @ParameterizedTest(name = "{0} - {1} = {2}")
     @MethodSource("provideMinusTestData")
@@ -92,7 +98,7 @@ public class Vector3dTests {
     }
 
     /**
-     *
+     * Метод тестирующий вычитание {@code null}
      */
     @Test
     public void testVector3dMinusNull() {
@@ -100,9 +106,11 @@ public class Vector3dTests {
     }
 
     /**
-     * @param firstVector
-     * @param secondVector
-     * @param expectedResult
+     * Метод тестирующий скалярное произведение трехмерных векторов
+     *
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedResult ожидаемый вектор
      */
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @MethodSource("provideDotProductTestData")
@@ -111,7 +119,7 @@ public class Vector3dTests {
     }
 
     /**
-     *
+     * Метод тестирующий скалярное произведение с {@code null}
      */
     @Test
     public void testVector3dDotProductNull() {
@@ -119,11 +127,11 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод тестирующий сравнение трехмерного вектора по координатам
      *
-     *
-     * @param firstVector
-     * @param secondVector
-     * @param expectedResult
+     * @param firstVector    первый вектор
+     * @param secondVector   второй вектор
+     * @param expectedResult ожидаемое значение сравнения
      */
     @ParameterizedTest(name = "coordinate ratio {0} and {1} is {2}")
     @MethodSource("provideCompareByCoordinateTestData")
@@ -134,7 +142,7 @@ public class Vector3dTests {
     }
 
     /**
-     *
+     * Метод тестирующий сравнение некорекктных параметров при сравнении
      */
     @Test
     public void testVector3dCompareByCoordinateIllegalArguments() {
@@ -148,9 +156,9 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод данных для теста получения координаты
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideGetCoordinateTestData() {
         return Stream.of(
@@ -161,9 +169,9 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод данных для тестов сложения
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideAddTestData() {
         return Stream.of(
@@ -172,9 +180,9 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод данных для тестов умножения на скаляр
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideMultiplyByScalarData() {
         return Stream.of(
@@ -186,9 +194,9 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод данных для тестов вычитания
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideMinusTestData() {
         return Stream.of(
@@ -197,9 +205,9 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод данных для тестов скалярного произведения
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideDotProductTestData() {
         return Stream.of(
@@ -208,9 +216,9 @@ public class Vector3dTests {
     }
 
     /**
+     * Метод данных для тестов сравнения по координатам
      *
-     *
-     * @return
+     * @return {@code stream} данных для теста
      */
     private static Stream<Arguments> provideCompareByCoordinateTestData() {
         return Stream.of(

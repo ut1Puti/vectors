@@ -1,31 +1,31 @@
 package vectors;
 
 /**
+ * Класс трехмерных векторов
  *
- *
- * @author
- * @version
+ * @author Кедровских Олег
+ * @version 1.0
  */
 public class Vector3d extends AbstractVector<Vector3d> {
     /**
-     *
+     * Поле первой координаты
      */
     private final double x;
     /**
-     *
+     * Поле второй координаты
      */
     private final double y;
     /**
-     *
+     * Поле третьей координаты
      */
     private final double z;
 
     /**
+     * Конструктор - создает экземпляр классов
      *
-     *
-     * @param x
-     * @param y
-     * @param z
+     * @param x первая координата
+     * @param y вторая координата
+     * @param z третья координата
      */
     public Vector3d(double x, double y, double z) {
         this.x = x;
@@ -34,9 +34,9 @@ public class Vector3d extends AbstractVector<Vector3d> {
     }
 
     /**
+     * Конструктор - создает экземляр класс на основе массива координат вектора
      *
-     *
-     * @param vectorCoordinates
+     * @param vectorCoordinates массив координат вектора
      */
     private Vector3d(double[] vectorCoordinates) {
 
@@ -50,11 +50,11 @@ public class Vector3d extends AbstractVector<Vector3d> {
     }
 
     /**
-     *
+     * Метод получающий координату вектора
      *
      * @param coordinateIndex номер координаты, которую необходимо получить их вектора,
      *                        номер координаты должен быть в машинном представлении, то есть как индексы массива
-     * @return
+     * @return координату вектора по индексу. Пример {1, 2, 3} индексы координат соодтвествуют числам - 1
      */
     @Override
     public double getCoordinate(int coordinateIndex) {
@@ -73,9 +73,9 @@ public class Vector3d extends AbstractVector<Vector3d> {
     }
 
     /**
+     * Метод получающий размерность вектора
      *
-     *
-     * @return
+     * @return {@code 3}
      */
     @Override
     public int getDimension() {
@@ -83,10 +83,10 @@ public class Vector3d extends AbstractVector<Vector3d> {
     }
 
     /**
-     *
+     * Метод выполняющий сложение трехмерных векторов
      *
      * @param anotherVector вектор, который является вторым аргументом операции сложения
-     * @return
+     * @return новый трехмерный вектор являющийся результатом сложения двух трехмерных векторов
      */
     @Override
     public Vector3d add(Vector3d anotherVector) {
@@ -100,10 +100,10 @@ public class Vector3d extends AbstractVector<Vector3d> {
     }
 
     /**
-     *
+     * Метод выполняющий умножение трехмерного вектора на скаляр
      *
      * @param scalar значение скаляра
-     * @return
+     * @return новый трехмерный вектор являющийся результатом умножения трехмерного вектора на скаляр
      */
     @Override
     public Vector3d multiplyByScalar(double scalar) {

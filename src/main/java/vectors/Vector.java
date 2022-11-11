@@ -60,7 +60,7 @@ public interface Vector<T extends Vector<T>> {
      * Метод выполняющий операцию скалярного произведения векторов
      *
      * @param anotherVector вектор, который является вторым аргументом операции скалярного произведения,
-     *                     если {@code null} должно возникать исключение {@code IllegalArgumentException}
+     *                      если {@code null} должно возникать исключение {@code IllegalArgumentException}
      * @return результат скалярного произведения двух векторов
      * @throws IllegalArgumentException возникает если параметр сравниваемого вектора {@code anotherVector} равен {@code null}
      */
